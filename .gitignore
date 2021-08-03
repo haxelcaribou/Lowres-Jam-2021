@@ -5,3 +5,6 @@
 bin/
 build/
 lib/
+
+# Git Plugin
+git_api.gdn*
