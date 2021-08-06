@@ -4,16 +4,25 @@
 [ext_resource path="res://Scripts/character.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 1.9969, 1.60419 )
+extents = Vector2( 1.97293, 3.4729 )
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
-position = Vector2( 30.7747, 35.781 )
+position = Vector2( 32, 32 )
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.125838, -1.25553 )
+position = Vector2( 0, 0.5 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0.858533, -3.61105 )
 texture = ExtResource( 1 )
+offset = Vector2( 1, 0 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+drag_margin_left = 0.75
+drag_margin_top = 0.75
+drag_margin_right = 0.75
+drag_margin_bottom = 0.75
