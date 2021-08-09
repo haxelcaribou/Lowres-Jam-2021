@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="LowResJam"
-run/main_scene="res://Scenes/Full Scene.tscn"
+run/main_scene="res://Scenes/Game.tscn"
 config/icon="res://icon.png"
 
 [display]
