@@ -11,14 +11,16 @@ position = Vector2( 32, 32 )
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 1.3433 )
+position = Vector2( 0.0496063, -2.5756 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0.0496063, -3.91889 )
 texture = ExtResource( 1 )
 offset = Vector2( 1, 0 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 0.0992126, -3.1252 )
 current = true
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true

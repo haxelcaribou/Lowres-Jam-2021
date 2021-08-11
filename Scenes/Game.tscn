@@ -474,8 +474,12 @@ resource_local_to_scene = true
 
 [node name="Node2D" type="Node2D"]
 
-[node name="TileMap" parent="." instance=ExtResource( 3 )]
+[node name="YSort" type="YSort" parent="."]
+
+[node name="KinematicBody2D" parent="YSort" instance=ExtResource( 2 )]
+
+[node name="TileMap" parent="YSort" instance=ExtResource( 3 )]
 z_index = 1
 tile_set = SubResource( 50 )
-
-[node name="KinematicBody2D" parent="." instance=ExtResource( 2 )]
+cell_tile_origin = 2
+cell_y_sort = true
