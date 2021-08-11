@@ -4,14 +4,14 @@
 [ext_resource path="res://Scripts/Character.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 1.97293, 3.4729 )
+extents = Vector2( 2.01393, 2.64752 )
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
 position = Vector2( 32, 32 )
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 0.5 )
+position = Vector2( 0, 1.3433 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
