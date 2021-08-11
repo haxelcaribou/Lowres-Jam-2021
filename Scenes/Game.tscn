@@ -1,8 +1,9 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://Images/Tileset_Wall.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Character.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Dimension.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Water.tres" type="TileSet" id=4]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 8, 0, 8, 12, 0, 12 )
@@ -474,11 +475,20 @@ resource_local_to_scene = true
 
 [node name="Node2D" type="Node2D"]
 
+[node name="Ground" type="TileMap" parent="."]
+format = 1
+
+[node name="Water" type="TileMap" parent="."]
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 8, 8 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 131072, 1, 0, 131078, 2, 0, 131078, 3, 0, 131078, 4, 0, 7, 65536, 0, 131079, 131072, 0, 131079, 196608, 0, 65543, 393216, 0, 0, 393217, 0, 131076, 393218, 0, 131076, 393219, 0, 1, 458752, 0, 65536, 458753, 0, 196613, 458754, 0, 196613, 458755, 0, 65537 )
+
 [node name="YSort" type="YSort" parent="."]
 
 [node name="KinematicBody2D" parent="YSort" instance=ExtResource( 2 )]
 
-[node name="TileMap" parent="YSort" instance=ExtResource( 3 )]
+[node name="Walls" parent="YSort" instance=ExtResource( 3 )]
 z_index = 1
 tile_set = SubResource( 50 )
 cell_tile_origin = 2

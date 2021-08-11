@@ -2,12 +2,15 @@ extends KinematicBody2D
 
 export var speed = 30
 var vel = Vector2()
-var slide = false
+var hot = false
 var switchNum = 0
+
+func _ready():
+	GameManager.Player = self
 
 func switch_input():
 	if Input.is_action_just_pressed("switch_map") and vel.length_squared() == 0:
-		slide = !slide
+		hot = !hot
 		switchNum += 1
 
 func movement_input():
@@ -37,8 +40,8 @@ func slide_input():
 
 func _physics_process(delta):
 	switch_input()
-	if slide:
-		slide_input()
-	else:
+	if hot:
 		movement_input()
+	else:
+		slide_input()
 	vel = move_and_slide(vel)
