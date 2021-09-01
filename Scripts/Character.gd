@@ -12,6 +12,10 @@ func switch_input():
 	if Input.is_action_just_pressed("switch_map") and vel.length_squared() == 0:
 		hot = !hot
 		switchNum += 1
+		if hot:
+			GameManager.Water.set_collision_mask_bit(0, true)
+		else:
+			GameManager.Water.set_collision_mask_bit(0, false)
 
 func movement_input():
 	vel = Vector2()
