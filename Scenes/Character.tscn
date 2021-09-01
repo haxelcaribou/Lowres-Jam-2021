@@ -3,7 +3,7 @@
 [ext_resource path="res://Scripts/Character.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 2.01393, 2.64752 )
+extents = Vector2( 3.91584, 3.8617 )
 
 [sub_resource type="StreamTexture" id=2]
 load_path = "res://.import/Sprite.png-437a78436247c8630e4558a72c25d04a.stex"
@@ -31,7 +31,7 @@ position = Vector2( 32, 32 )
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.0496063, -2.5756 )
+position = Vector2( 1.03287, 0.186897 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
