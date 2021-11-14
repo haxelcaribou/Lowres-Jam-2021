@@ -2,50 +2,52 @@ extends KinematicBody2D
 
 export var speed = 30
 var vel = Vector2()
-var hot = false
-var switchNum = 0
+
+onready var _animation_player = $AnimationPlayer
 
 func _ready():
 	GameManager.Player = self
 
-func switch_input():
-	if Input.is_action_just_pressed("switch_map") and vel.length_squared() == 0:
-		hot = !hot
-		switchNum += 1
-		if hot:
-			GameManager.Water.set_collision_mask_bit(0, true)
-		else:
-			GameManager.Water.set_collision_mask_bit(0, false)
-
 func movement_input():
-	vel = Vector2()
-	if Input.is_action_pressed("move_up"):
-		vel.y -= 0.5
-	if Input.is_action_pressed("move_down"):
-		vel.y += 0.5
-	if Input.is_action_pressed("move_left"):
-		vel.x -= 0.5
-	if Input.is_action_pressed("move_right"):
-		vel.x += 0.5
-	vel = vel.normalized() * speed
-	
-func slide_input():
-	if vel.length_squared() != 0:
-		return
-	if Input.is_action_just_pressed("move_up"):
-		vel.y = -0.5
-	elif Input.is_action_just_pressed("move_down"):
-		vel.y = 0.5
-	elif Input.is_action_just_pressed("move_left"):
-		vel.x = -0.5
-	elif Input.is_action_just_pressed("move_right"):
-		vel.x = 0.5
+	if GameManager.isHot:
+		vel = Vector2()
+		if Input.is_action_pressed("move_up"):
+			vel.y -= 1
+		if Input.is_action_pressed("move_down"):
+			vel.y += 1
+		if Input.is_action_pressed("move_left"):
+			vel.x -= 1
+		if Input.is_action_pressed("move_right"):
+			vel.x += 1
+			
+		if Input.is_action_pressed("move_left") and vel.x < 0:
+			_animation_player.play("WalkLeft")
+		elif Input.is_action_pressed("move_right") and vel.x > 0:
+			_animation_player.play("WalkRight")
+		elif Input.is_action_pressed("move_up") and vel.y < 0:
+			_animation_player.play("WalkUp")
+		elif Input.is_action_pressed("move_down") and vel.y > 0:
+			_animation_player.play("WalkDown")
+		else:
+			_animation_player.stop()
+	else:
+		if vel.length_squared() != 0:
+			return
+		if Input.is_action_just_pressed("move_up"):
+			vel.y = -1
+		elif Input.is_action_just_pressed("move_down"):
+			vel.y = 1
+		elif Input.is_action_just_pressed("move_left"):
+			vel.x = -1
+		elif Input.is_action_just_pressed("move_right"):
+			vel.x = 1
+		
 	vel = vel.normalized() * speed
 
-func _physics_process(delta):
-	switch_input()
-	if hot:
-		movement_input()
-	else:
-		slide_input()
+func die():
+	return null
+
+func _physics_process(_delta):
+	GameManager.switch_map_input()
+	movement_input()
 	vel = move_and_slide(vel)
